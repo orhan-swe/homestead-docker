@@ -1,17 +1,14 @@
-FROM ubuntu:16.04
-MAINTAINER "https://github.com/shincoder"
+#FROM ubuntu:16.04
+FROM shincoder/homestead:php7.1
 
-ENV DEBIAN_FRONTEND noninteractive
-
-# Install packages
-ADD provision.sh /provision.sh
-ADD serve.sh /serve.sh
-
-ADD supervisor.conf /etc/supervisor/conf.d/supervisor.conf
-
+#CUSTOM:
+RUN apt-get update
+RUN apt-get install -y mysql-client
+ADD custom.sh /custom.sh
 RUN chmod +x /*.sh
+RUN ./custom.sh
 
-RUN ./provision.sh
+#lets copy our git config, star in the end is a WA for "if exists"
+COPY .gitconfig* /home/homestead/
+COPY .gitattributes* /home/homestead/
 
-EXPOSE 80 22 35729 9876
-CMD ["/usr/bin/supervisord"]
