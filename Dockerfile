@@ -1,5 +1,7 @@
-#FROM ubuntu:16.04
-FROM shincoder/homestead:php7.1
+#the image below takes ubuntu:16.04
+# Dockerfile: https://github.com/shincoder/homestead-docker/blob/master/Dockerfile
+
+FROM shincoder/homestead:php7.3
 
 #CUSTOM:
 RUN apt-get update
@@ -12,3 +14,6 @@ RUN ./custom.sh
 COPY .gitconfig* /home/homestead/
 COPY .gitattributes* /home/homestead/
 
+RUN apt-get install screen
+RUN apt-get install screen
+RUN apt-get install -y openjdk-8-jdk

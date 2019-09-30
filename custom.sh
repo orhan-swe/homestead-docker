@@ -18,3 +18,7 @@ if [ -f $HOME/.bash_aliases ]; then
 else
 	echo "cd /apps/" > $HOME/.bash_aliases   ## create new file
 fi
+
+#lets add pip3 also (may not work, sudo may be needed):
+apt-get update
+sudo apt-get -y install python3-pip
