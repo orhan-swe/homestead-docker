@@ -15,5 +15,4 @@ COPY .gitconfig* /home/homestead/
 COPY .gitattributes* /home/homestead/
 
 RUN apt-get install screen
-RUN apt-get install screen
 RUN apt-get install -y openjdk-8-jdk
